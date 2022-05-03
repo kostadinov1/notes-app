@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{% block main-content %}
+
+    <body>
+        <!--navigation bar-->
+        <header>
+            <nav>
+                <ul>
+                    <li class="img"><img src="/static/images/note.png" /></li>
+                    <li><a href="/">Notes</a></li>
+                    <li class="right">
+                        <a href="/add">Add Note</a>
+                        <a href="/profile">Profile</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <!--end navigation bar-->
+
+        <div class="body">
+            <!--headings-->
+            <h1>Edit Note</h1>
+            <!--headings-->
+
+            <!--note edit data form-->
+            <div class="form">
+                <form method="POST" action="{% url 'edit note' note.id %}">
+                    {% csrf_token %}
+                    <label for="name">Title</label>
+                    {{ form.title }}
+                    <label for="content">Content</label>
+                    {{ form.content }}
+                    <label for="image_url">Link to Image</label>
+                    {{ form.image_url }}
+                    <input type="submit" value="Edit" />
+                </form>
+            </div>
+            <!--end note edit data form-->
+        </div>
+
+{% endblock %}
